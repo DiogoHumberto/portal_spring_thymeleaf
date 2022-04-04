@@ -1,0 +1,71 @@
+<!-- Logout Modal-->
+<div th:fragment="modal-registration" class="modal fade" id="registrationModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			
+			<div class="modal-header">
+				<h5 class="modal-title text-center" id="exampleModalLabel">Novo Cadastro!</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			
+			<div class="modal-body">
+			
+				<form class="user" th:action="@{/usuario/novo}" method="post" th:object="${usuarioRegistrationDto}">
+			
+					<div class="form-group">
+						<label class="control-label" for="nome"> Nome completo </label>
+						<input type="text" class="form-control form-control-user" aria-describedby="nome" autofocus="autofocus"
+							id="nome" th:field="*{nome}" required placeholder="Coloque seu nome" />
+					</div>
+			
+					<div class="form-group">
+						<label class="control-label" for="email">E-mail </label>
+						<input type="email" class="form-control form-control-user" aria-describedby="emailHelp"
+							autofocus="autofocus" th:errorclass="is-invalid" id="email" th:field="*{email}" required
+							placeholder="Entre com seu E-mail" />
+						<div class="invalid-feedback" th:errors=*{email}></div>
+					</div>
+			
+					<div class="form-group">
+						<label class="control-label" for="email-confirm">Confirmar E-mail </label>
+						<input type="email" class="form-control form-control-user" aria-describedby="emailHelp"
+							autofocus="autofocus" th:errorclass="is-invalid" id="email-confirm" th:field="*{confirmEmail}" required
+							placeholder="Confirme seu E-mail">
+						<div class="invalid-feedback" th:errors=*{confirmEmail}></div>
+					</div>
+			
+					<div class="form-group">
+						<label class="control-label" for="password"> Insira uma Senha </label>
+						<input type="password" class="form-control form-control-user" id="password" name="password"
+							placeholder="Insira uma senha" th:field="*{password}" required autofocus="autofocus" />
+					</div>
+					<!--                                        <div class="form-group">
+					      <div class="custom-control custom-checkbox small">
+					          <input type="checkbox" class="custom-control-input" id="customCheck">
+					          <label class="custom-control-label" for="customCheck">Remember
+					              Me</label>
+					      </div>
+					      </div>-->
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm">
+								<input type="submit" name="login-submit" id="login-submit" class="btn btn-success btn-user btn-block"
+									value="Cadastrar-se!" />
+							</div>
+						</div>
+						<hr>
+						<a href="#" class="btn btn-google btn-user btn-block">
+							<i class="fab fa-google fa-fw"></i> Login Com Google
+						</a>
+						<a href="#" class="btn btn-facebook btn-user btn-block">
+							<i class="fab fa-facebook-f fa-fw"></i> Login Com Facebook
+						</a>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
